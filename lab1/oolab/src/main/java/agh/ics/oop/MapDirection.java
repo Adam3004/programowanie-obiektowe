@@ -46,8 +46,9 @@ public enum MapDirection {
         return MapDirection.values()[nextNumber];
     }
 
-    public String toUnitVector() {
-        return Arrays.toString(getUnitVector());
+    public Vector2d toUnitVector() {
+        int[] position = getUnitVector();
+        return new Vector2d(position[0], position[1]);
     }
 
     @Override

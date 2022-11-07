@@ -25,7 +25,7 @@ public class MapDirectionTest {
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("All tests have been completed");
+        System.out.println("All tests in MapDirectionTest are ended");
     }
 
     @Test

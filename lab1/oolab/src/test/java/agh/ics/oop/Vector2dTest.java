@@ -30,7 +30,7 @@ class Vector2dTest {
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("All tests have been completed");
+        System.out.println("All tests in Vector2dTest are ended");
     }
 
     @Test
