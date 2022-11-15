@@ -15,9 +15,17 @@ public class RectangularMap implements IWorldMap {
         this.height = height;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     @Override
     public boolean canMoveTo(Vector2d position) {
-        Vector2d maxVector = new Vector2d(width-1, height-1);
+        Vector2d maxVector = new Vector2d(width - 1, height - 1);
         Vector2d minVector = new Vector2d(0, 0);
         return position.precedes(maxVector) && position.follows(minVector) && !isOccupied(position);
     }
@@ -36,7 +44,7 @@ public class RectangularMap implements IWorldMap {
         List<Animal> lista = positions.stream()
                 .filter(animal -> animal.isAt(position))
                 .collect(Collectors.toList());
-        return lista.size()>0;
+        return lista.size() > 0;
     }
 
     @Override
@@ -44,7 +52,7 @@ public class RectangularMap implements IWorldMap {
         List<Animal> lista = positions.stream()
                 .filter(animal -> animal.isAt(position))
                 .collect(Collectors.toList());
-        if (lista.size()>0){
+        if (lista.size() > 0) {
             return lista.get(0);
         }
         return null;
@@ -53,6 +61,6 @@ public class RectangularMap implements IWorldMap {
     @Override
     public String toString() {
         MapVisualizer mapVisualizer = new MapVisualizer(this);
-        return mapVisualizer.draw(new Vector2d(0, 0), new Vector2d(width-1, height-1));
+        return mapVisualizer.draw(new Vector2d(0, 0), new Vector2d(width - 1, height - 1));
     }
 }

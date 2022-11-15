@@ -69,26 +69,4 @@ public class Animal {
     public String toString() {
         return String.valueOf(mapDirection.name().toLowerCase(Locale.ROOT).charAt(0)).toUpperCase();
     }
-//
-//    @Override
-//    public boolean canMoveTo(Vector2d position) {
-//        Vector2d maxVector = new Vector2d(4, 4);
-//        Vector2d minVector = new Vector2d(0, 0);
-//        return position.precedes(maxVector) && position.follows(minVector);
-//    }
-//
-//    @Override
-//    public boolean place(Animal animal) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean isOccupied(Vector2d position) {
-//        return false;
-//    }
-//
-//    @Override
-//    public Object objectAt(Vector2d position) {
-//        return null;
-//    }
 }

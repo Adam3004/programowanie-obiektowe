@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AnimalMoving {
+
+//if u want to run tests without window go to SimulationEngine and comment 3 lines :D
+public class AnimalMovingTest {
     private MoveDirection[] directions;
     private IWorldMap map;
     private Vector2d[] positions;
@@ -45,10 +47,10 @@ public class AnimalMoving {
         }
     }
 
-//    input test
+    //    input test
     @Test
     public void test2() {
-        args = new String[]{"aaa" ,"left", "left", "f", "bbb", "forward", "f", "f", "f", "f", "f","LeFFt", "f", "f"};
+        args = new String[]{"aaa", "left", "left", "f", "bbb", "forward", "f", "f", "f", "f", "f", "LeFFt", "f", "f"};
         directions = new OptionsParser().parse(args);
         engine = new SimulationEngine(directions, map, positions);
         engine.run();
@@ -90,10 +92,10 @@ public class AnimalMoving {
         }
     }
 
-// trying to make a collision and put animal on the other
+    // trying to make a collision and put animal on the other
     @Test
     public void test4() {
-        positions = new Vector2d[]{new Vector2d(3, 6), new Vector2d(0, 3), new Vector2d(3, 0), new Vector2d(6, 3), new Vector2d(6,3)};
+        positions = new Vector2d[]{new Vector2d(3, 6), new Vector2d(0, 3), new Vector2d(3, 0), new Vector2d(6, 3), new Vector2d(6, 3)};
         map = new RectangularMap(7, 7);
         args = new String[]{"r", "r", "r", "l", "r", "f", "l", "f", "f", "f", "f", "f", "f", "f", "f", "f"};
         directions = new OptionsParser().parse(args);
