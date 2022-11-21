@@ -2,16 +2,10 @@ package agh.ics.oop;
 
 import java.util.Locale;
 
-public class Animal {
+public class Animal implements IMapObject {
     private MapDirection mapDirection;
     private Vector2d currPosition;
-    private IWorldMap map;
-
-//    no more necessary
-//    public Animal() {
-//        this.mapDirection = MapDirection.NORTH;
-//        this.currPosition = new Vector2d(2, 2);
-//    }
+    private final IWorldMap map;
 
     public Animal(IWorldMap map) {
         this.map = map;
@@ -34,10 +28,6 @@ public class Animal {
         return mapDirection;
     }
 
-    public Vector2d getCurrPosition() {
-        return currPosition;
-    }
-
     public void move(MoveDirection direction) {
         switch (direction) {
             case RIGHT -> this.mapDirection = this.mapDirection.next();
@@ -50,19 +40,21 @@ public class Animal {
     private void tryMoveAnimal(Option option) {
         Vector2d tempVector = new Vector2d(this.currPosition.x, this.currPosition.y);
         switch (option) {
-            case ADD -> {
-                tempVector = tempVector.add(mapDirection.toUnitVector());
-                if (map.canMoveTo(tempVector)) {
-                    this.currPosition = tempVector;
-                }
-            }
-            case SUBTRACT -> {
-                tempVector = tempVector.subtract(mapDirection.toUnitVector());
-                if (map.canMoveTo(tempVector)) {
-                    this.currPosition = tempVector;
-                }
-            }
+            case ADD -> tempVector = tempVector.add(mapDirection.toUnitVector());
+            case SUBTRACT -> tempVector = tempVector.subtract(mapDirection.toUnitVector());
         }
+        if (map.canMoveTo(tempVector)) {
+            this.currPosition = tempVector;
+        } else if (map.objectAt(tempVector).getClass().equals(Grass.class)) {
+            GrassField grassField = (GrassField) map;
+            grassField.changeGrassPosition(((Grass) map.objectAt(tempVector)));
+            this.currPosition = tempVector;
+        }
+    }
+
+    @Override
+    public Vector2d getPosition() {
+        return currPosition;
     }
 
     @Override
