@@ -1,13 +1,14 @@
 package agh.ics.oop;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class GrassField extends AbstractWorldMap implements IWorldMap {
     private final int amountOfGras;
 
     public GrassField(int amountOfGras) {
-        super(new ArrayList<>());
+        super(new HashMap<>());
         this.amountOfGras = amountOfGras;
     }
 
@@ -16,7 +17,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
     }
 
     private void removeGrass(Grass grass) {
-        objectPositions.remove(grass);
+        objectPositions.remove(grass.getPosition());
     }
 
     private Vector2d generatePlace() {
@@ -42,22 +43,22 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public Vector2d findBottomLeft() {
-        int min_x = objectPositions.stream()
-                .mapToInt(object -> object.getPosition().x)
+        int min_x = objectPositions.keySet().stream()
+                .mapToInt(object -> object.x)
                 .min().orElse(0);
-        int min_y = objectPositions.stream()
-                .mapToInt(object -> object.getPosition().y)
+        int min_y = objectPositions.keySet().stream()
+                .mapToInt(object -> object.y)
                 .min().orElse(0);
         return new Vector2d(min_x, min_y);
     }
 
     @Override
     public Vector2d findTopRight() {
-        int max_x = objectPositions.stream()
-                .mapToInt(object -> object.getPosition().x)
+        int max_x = objectPositions.keySet().stream()
+                .mapToInt(object -> object.x)
                 .max().orElse(0);
-        int max_y = objectPositions.stream()
-                .mapToInt(object -> object.getPosition().y)
+        int max_y = objectPositions.keySet().stream()
+                .mapToInt(object -> object.y)
                 .max().orElse(0);
         return new Vector2d(max_x, max_y);
     }

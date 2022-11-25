@@ -7,7 +7,7 @@ public class World {
         Vector2d[] positions = {new Vector2d(2, 2), new Vector2d(3, 4), new Vector2d(3, 4)};
         IEngine engine = new SimulationEngine(directions, map, positions);
         engine.run();
-//        System.out.println(map);
+        System.out.println(map);
     }
 
 //    spotbups IE1, IE2 warto przeczytać o tych błędach, checkstyle

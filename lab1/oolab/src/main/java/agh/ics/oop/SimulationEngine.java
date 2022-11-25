@@ -1,20 +1,24 @@
 package agh.ics.oop;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SimulationEngine implements IEngine {
     private final MoveDirection[] directions;
     private final IWorldMap iWorldMap;
-    private List<IMapObject> objectPositions;
+    private Map<Vector2d, IMapObject> objectPositions;
     private final JFrame jFrame;
     private final Vector2d[] startingPositions;
+    private final List<Animal> animals;
 
     public SimulationEngine(MoveDirection[] directions, IWorldMap iWorldMap, Vector2d[] startingPositions) {
         this.startingPositions = startingPositions;
         this.iWorldMap = iWorldMap;
         this.directions = directions;
         this.jFrame = new JFrame("AnimalsWindow");
+        animals = new ArrayList<>();
     }
 
 
@@ -25,24 +29,29 @@ public class SimulationEngine implements IEngine {
         }
     }
 
+    private void getAnimals() {
+        for (Map.Entry<Vector2d, IMapObject> entry : objectPositions.entrySet()) {
+
+            animals.add((Animal) entry.getValue());
+
+        }
+    }
+
 
     //    żeby wygodniej odpalać testy należy zakomentować linijki poniżej tych z "*"
     @Override
     public void run() {
         positionAnimalsOnMap();
         int n = objectPositions.size();
+        getAnimals();
         ((AbstractWorldMap) iWorldMap).init();
-        IMapObject mapObject;
         //        *
 //        createAnimalsWindow();
         for (int i = 0; i < directions.length; i++) {
 //            *
 //            updateScreen();
-            mapObject = objectPositions.get(i % n);
-            if (mapObject.getClass().equals(Animal.class)) {
-                ((Animal) mapObject).move(directions[i]);
-            }
-//            System.out.println(iWorldMap);
+            animals.get(i % n).move(directions[i]);
+            System.out.println(iWorldMap);
         }
 //        *
 //        updateScreen();

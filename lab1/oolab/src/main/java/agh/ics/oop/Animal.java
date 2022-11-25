@@ -1,23 +1,27 @@
 package agh.ics.oop;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class Animal implements IMapObject {
     private MapDirection mapDirection;
     private Vector2d currPosition;
     private final IWorldMap map;
+    private final List<IPositionChangeObserver> observers;
 
     public Animal(IWorldMap map) {
         this.map = map;
         this.mapDirection = MapDirection.NORTH;
         this.currPosition = new Vector2d(2, 2);
+        this.observers = new ArrayList<>();
     }
 
     public Animal(IWorldMap map, Vector2d initialPosition) {
         this.map = map;
         this.currPosition = initialPosition;
         this.mapDirection = MapDirection.NORTH;
-
+        this.observers = new ArrayList<>();
     }
 
     public boolean isAt(Vector2d position) {
@@ -37,6 +41,20 @@ public class Animal implements IMapObject {
         }
     }
 
+    public void addObserver(IPositionChangeObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(IPositionChangeObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void positionChanged(Vector2d newPosition) {
+        for (IPositionChangeObserver observer : observers) {
+            observer.positionChanged(getPosition(), newPosition);
+        }
+    }
+
     private void tryMoveAnimal(Option option) {
         Vector2d tempVector = new Vector2d(this.currPosition.x, this.currPosition.y);
         switch (option) {
@@ -44,10 +62,12 @@ public class Animal implements IMapObject {
             case SUBTRACT -> tempVector = tempVector.subtract(mapDirection.toUnitVector());
         }
         if (map.canMoveTo(tempVector)) {
+            positionChanged(tempVector);
             this.currPosition = tempVector;
         } else if (map.objectAt(tempVector).getClass().equals(Grass.class)) {
             GrassField grassField = (GrassField) map;
             grassField.changeGrassPosition(((Grass) map.objectAt(tempVector)));
+            positionChanged(tempVector);
             this.currPosition = tempVector;
         }
     }

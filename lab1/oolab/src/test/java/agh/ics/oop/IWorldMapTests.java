@@ -26,10 +26,10 @@ public class IWorldMapTests {
         try {
             assertTrue(map.isOccupied(new Vector2d(2, 11)));
             assertTrue(map.isOccupied(new Vector2d(1, 4)));
-            for (int i = positions.length; i< positions.length+map.getAmountOfGras(); i++) {
+            for (int i = positions.length; i < positions.length + map.getAmountOfGras(); i++) {
                 assertEquals(map.getObjectPositions().get(i).getClass(), Grass.class);
             }
-            
+
             Animal animal1 = (Animal) map.objectAt(new Vector2d(2, 11));
             Animal animal2 = (Animal) map.objectAt(new Vector2d(1, 4));
 
@@ -52,7 +52,7 @@ public class IWorldMapTests {
         try {
             assertTrue(map.isOccupied(new Vector2d(2, 2)));
             assertTrue(map.isOccupied(new Vector2d(3, 4)));
-            for (int i = positions.length; i< positions.length+map.getAmountOfGras(); i++) {
+            for (int i = positions.length; i < positions.length + map.getAmountOfGras(); i++) {
                 assertEquals(map.getObjectPositions().get(i).getClass(), Grass.class);
             }
 

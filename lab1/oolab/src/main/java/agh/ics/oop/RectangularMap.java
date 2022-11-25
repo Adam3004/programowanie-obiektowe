@@ -1,13 +1,14 @@
 package agh.ics.oop;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RectangularMap extends AbstractWorldMap implements IWorldMap {
     private final int width;
     private final int height;
 
     public RectangularMap(int width, int height) {
-        super(new ArrayList<>());
+        super(new HashMap<>());
         this.width = width;
         this.height = height;
     }
