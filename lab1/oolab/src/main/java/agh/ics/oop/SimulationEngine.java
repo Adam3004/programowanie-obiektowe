@@ -22,7 +22,7 @@ public class SimulationEngine implements IEngine {
     }
 
 
-    private void positionAnimalsOnMap() {
+    private void positionAnimalsOnMap() throws IllegalArgumentException{
         objectPositions = ((AbstractWorldMap) iWorldMap).getObjectPositions();
         for (Vector2d position : startingPositions) {
             iWorldMap.place(new Animal(iWorldMap, position));
@@ -40,7 +40,7 @@ public class SimulationEngine implements IEngine {
 
     //    żeby wygodniej odpalać testy należy zakomentować linijki poniżej tych z "*"
     @Override
-    public void run() {
+    public void run() throws IllegalArgumentException {
         positionAnimalsOnMap();
         int n = objectPositions.size();
         getAnimals();
@@ -51,7 +51,7 @@ public class SimulationEngine implements IEngine {
 //            *
 //            updateScreen();
             animals.get(i % n).move(directions[i]);
-            System.out.println(iWorldMap);
+//            System.out.println(iWorldMap);
         }
 //        *
 //        updateScreen();

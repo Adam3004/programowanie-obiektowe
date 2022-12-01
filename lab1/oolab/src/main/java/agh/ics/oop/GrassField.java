@@ -6,9 +6,10 @@ import java.util.Random;
 
 public class GrassField extends AbstractWorldMap implements IWorldMap {
     private final int amountOfGras;
+    private Vector2d tmpVec;
 
     public GrassField(int amountOfGras) {
-        super(new HashMap<>());
+        super(new HashMap<>(), new MapBoundary());
         this.amountOfGras = amountOfGras;
     }
 
@@ -25,52 +26,48 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
         return new Vector2d(random.nextInt((int) Math.sqrt(amountOfGras * 10)), random.nextInt((int) Math.sqrt(amountOfGras * 10)));
     }
 
-    public void changeGrassPosition(Grass grass) {
+    public void changeGrassPosition(Grass grass) throws IllegalArgumentException {
+        mapBoundary.removePosition(grass.getPosition());
         removeGrass(grass);
         int n = objectPositions.size();
         while (objectPositions.size() < n + 1) {
-            place(new Grass(generatePlace()));
+            tmpVec = generatePlace();
+            if (!isOccupied(tmpVec)) {
+                place(new Grass(tmpVec));
+            }
         }
+
     }
 
     @Override
-    public void init() {
+    public void init() throws IllegalArgumentException {
         int startingSize = objectPositions.size();
         while (objectPositions.size() < amountOfGras + startingSize) {
-            place(new Grass(generatePlace()));
+            tmpVec = generatePlace();
+            if (!isOccupied(tmpVec)) {
+                place(new Grass(tmpVec));
+            }
         }
     }
 
     @Override
     public Vector2d findBottomLeft() {
-        int min_x = objectPositions.keySet().stream()
-                .mapToInt(object -> object.x)
-                .min().orElse(0);
-        int min_y = objectPositions.keySet().stream()
-                .mapToInt(object -> object.y)
-                .min().orElse(0);
-        return new Vector2d(min_x, min_y);
+        return new Vector2d(mapBoundary.getXAxis().first().getX(), mapBoundary.getYAxis().first().getY());
     }
 
     @Override
     public Vector2d findTopRight() {
-        int max_x = objectPositions.keySet().stream()
-                .mapToInt(object -> object.x)
-                .max().orElse(0);
-        int max_y = objectPositions.keySet().stream()
-                .mapToInt(object -> object.y)
-                .max().orElse(0);
-        return new Vector2d(max_x, max_y);
+        return new Vector2d(mapBoundary.getXAxis().last().getX(), mapBoundary.getYAxis().last().getY());
     }
 
     @Override
     public int getWidth() {
-        return findTopRight().x - findBottomLeft().x;
+        return findTopRight().getX() - findBottomLeft().getX();
     }
 
     @Override
     public int getHeight() {
-        return findTopRight().y - findBottomLeft().y;
+        return findTopRight().getY() - findBottomLeft().getY();
     }
 
     @Override

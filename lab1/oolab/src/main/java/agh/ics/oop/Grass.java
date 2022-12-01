@@ -13,6 +13,16 @@ public class Grass implements IMapObject {
     }
 
     @Override
+    public int getPositionX() {
+        return getPosition().getX();
+    }
+
+    @Override
+    public int getPositionY() {
+        return getPosition().getY();
+    }
+
+    @Override
     public String toString() {
         return "*";
     }

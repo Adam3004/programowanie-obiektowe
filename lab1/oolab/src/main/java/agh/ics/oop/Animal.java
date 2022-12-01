@@ -32,7 +32,7 @@ public class Animal implements IMapObject {
         return mapDirection;
     }
 
-    public void move(MoveDirection direction) {
+    public void move(MoveDirection direction) throws IllegalArgumentException {
         switch (direction) {
             case RIGHT -> this.mapDirection = this.mapDirection.next();
             case LEFT -> this.mapDirection = this.mapDirection.previous();
@@ -52,11 +52,14 @@ public class Animal implements IMapObject {
     public void positionChanged(Vector2d newPosition) {
         for (IPositionChangeObserver observer : observers) {
             observer.positionChanged(getPosition(), newPosition);
+            if (observer instanceof MapBoundary && map instanceof GrassField) {
+                ((MapBoundary) observer).repairAxes(((GrassField) map).getObjectPositions());
+            }
         }
     }
 
-    private void tryMoveAnimal(Option option) {
-        Vector2d tempVector = new Vector2d(this.currPosition.x, this.currPosition.y);
+    private void tryMoveAnimal(Option option) throws IllegalArgumentException {
+        Vector2d tempVector = new Vector2d(this.currPosition.getX(), this.currPosition.getY());
         switch (option) {
             case ADD -> tempVector = tempVector.add(mapDirection.toUnitVector());
             case SUBTRACT -> tempVector = tempVector.subtract(mapDirection.toUnitVector());
@@ -75,6 +78,16 @@ public class Animal implements IMapObject {
     @Override
     public Vector2d getPosition() {
         return currPosition;
+    }
+
+    @Override
+    public int getPositionX() {
+        return getPosition().getX();
+    }
+
+    @Override
+    public int getPositionY() {
+        return getPosition().getY();
     }
 
     @Override

@@ -2,13 +2,14 @@ package agh.ics.oop;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     Map<Vector2d, IMapObject> objectPositions;
+    MapBoundary mapBoundary;
 
-    public AbstractWorldMap(Map<Vector2d, IMapObject> objectPositions) {
+    public AbstractWorldMap(Map<Vector2d, IMapObject> objectPositions, MapBoundary mapBoundary) {
         this.objectPositions = objectPositions;
+        this.mapBoundary = mapBoundary;
     }
 
     public Map<Vector2d, IMapObject> getObjectPositions() {
@@ -37,15 +38,18 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     public abstract boolean canMoveTo(Vector2d position);
 
     @Override
-    public boolean place(IMapObject object) {
+    public void place(IMapObject object) throws IllegalArgumentException {
         if (!isOccupied(object.getPosition())) {
             objectPositions.put(object.getPosition(), object);
-            if (object instanceof Animal){
+            if (object instanceof Animal) {
                 ((Animal) object).addObserver(this);
+                ((Animal) object).addObserver(mapBoundary);
             }
-            return true;
+            mapBoundary.addElementToAxes(object);
+            return;
         }
-        return false;
+        throw new IllegalArgumentException("You cannot place " + object.getClass().getSimpleName() + " on " + object.getPosition());
+
     }
 
     @Override

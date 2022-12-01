@@ -8,7 +8,7 @@ public class RectangularMap extends AbstractWorldMap implements IWorldMap {
     private final int height;
 
     public RectangularMap(int width, int height) {
-        super(new HashMap<>());
+        super(new HashMap<>(), new MapBoundary());
         this.width = width;
         this.height = height;
     }

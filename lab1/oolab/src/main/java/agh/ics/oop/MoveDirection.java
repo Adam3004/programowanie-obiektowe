@@ -29,19 +29,26 @@ public enum MoveDirection {
         return letter;
     }
 
-    public static MoveDirection[] changeStringsToEnums(String[] moves) {
+    public static MoveDirection[] changeStringsToEnums(String[] moves) throws IllegalArgumentException {
         List<String> letters = getAllLetters();
+
         Arrays.stream(MoveDirection.values()).forEach(moveDirection -> letters.add(moveDirection.name().toLowerCase(Locale.ROOT)));
-        return Arrays.stream(moves)
+        MoveDirection[] newList = Arrays.stream(moves)
                 .filter(letters::contains)
                 .map(MoveDirection::changeLetterToMoveDirection)
                 .toArray(MoveDirection[]::new);
+        if (newList.length != moves.length) {
+            String[] wrongElements = Arrays.stream(moves)
+                    .filter(letters::contains)
+                    .toArray(String[]::new);
+            throw new IllegalArgumentException(wrongElements[0] + "\" is not legal move specification\"");
+        }
+        return newList;
     }
 
     private static MoveDirection changeLetterToMoveDirection(String letter) {
         List<MoveDirection> newVal = Arrays.stream(MoveDirection.values())
-                .filter(moveDirection -> moveDirection.getLetter().equals(letter) || moveDirection.name().toLowerCase(Locale.ROOT).equals(letter))
-                .collect(Collectors.toList());
+                .filter(moveDirection -> moveDirection.getLetter().equals(letter) || moveDirection.name().toLowerCase(Locale.ROOT).equals(letter)).toList();
         return newVal.get(0);
     }
 
