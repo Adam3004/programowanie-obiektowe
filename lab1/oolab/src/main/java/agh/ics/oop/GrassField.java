@@ -1,6 +1,5 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -52,12 +51,20 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public Vector2d findBottomLeft() {
-        return new Vector2d(mapBoundary.getXAxis().first().getX(), mapBoundary.getYAxis().first().getY());
+        if (!mapBoundary.getXAxis().isEmpty() && !mapBoundary.getYAxis().isEmpty()) {
+            return new Vector2d(mapBoundary.getXAxis().first().getX(), mapBoundary.getYAxis().first().getY());
+        } else {
+            return new Vector2d(0, 0);
+        }
     }
 
     @Override
     public Vector2d findTopRight() {
-        return new Vector2d(mapBoundary.getXAxis().last().getX(), mapBoundary.getYAxis().last().getY());
+        if (!mapBoundary.getXAxis().isEmpty() && !mapBoundary.getYAxis().isEmpty()) {
+            return new Vector2d(mapBoundary.getXAxis().last().getX(), mapBoundary.getYAxis().last().getY());
+        } else {
+            return new Vector2d(0, 0);
+        }
     }
 
     @Override

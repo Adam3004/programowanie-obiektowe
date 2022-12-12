@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.PlaceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-29T21:14:01" hostname="DESKTOP-9C6IDOG" time="1.844">
+<testsuite name="agh.ics.oop.PlaceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-12-12T20:22:27" hostname="DESKTOP-9C6IDOG" time="0.004">
   <properties/>
-  <testcase name="notThrowsTest()" classname="agh.ics.oop.PlaceTest" time="1.84"/>
-  <testcase name="ThrowsTest()" classname="agh.ics.oop.PlaceTest" time="0.003"/>
+  <testcase name="notThrowsTest()" classname="agh.ics.oop.PlaceTest" time="0.002"/>
+  <testcase name="ThrowsTest()" classname="agh.ics.oop.PlaceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -8,25 +8,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 //if u want to run tests without window go to SimulationEngine and comment 3 lines :D
 public class AnimalMovingTest {
-//    private MoveDirection[] directions;
-//    private IWorldMap map;
-//    private Vector2d[] positions;
-//    private IEngine engine;
-//    private Animal animal1;
-//    private Animal animal2;
-//    private Animal animal3;
-//    private Animal animal4;
-//    private String[] args;
-//
-//    @BeforeEach
-//    public void doBefore() {
-//        map = new RectangularMap(10, 5);
-//        positions = new Vector2d[]{new Vector2d(2, 2), new Vector2d(3, 4)};
-//    }
-//
-//    //    area check and possibility of collision
-//    @Test
-//    public void test1() {
+    private MoveDirection[] directions;
+    private IWorldMap map;
+    private Vector2d[] positions;
+    private IEngine engine;
+    private Animal animal1;
+    private Animal animal2;
+    private Animal animal3;
+    private Animal animal4;
+    private String[] args;
+
+    @BeforeEach
+    public void doBefore() {
+        map = new RectangularMap(10, 5);
+        positions = new Vector2d[]{new Vector2d(2, 2), new Vector2d(3, 4)};
+    }
+
+    //    area check and possibility of collision
+    @Test
+    public void test1() {
 //        args = new String[]{"forward", "left", "f", "forward", "f", "l", "f", "l", "f", "l", "f", "l", "f", "f", "f", "f", "f"};
 //        directions = new OptionsParser().parse(args);
 //        engine = new SimulationEngine(directions, map, positions);
@@ -45,11 +45,11 @@ public class AnimalMovingTest {
 //        } catch (AssertionError | NullPointerException e) {
 //            e.printStackTrace();
 //        }
-//    }
-//
-//    //    input test
-//    @Test
-//    public void test2() {
+    }
+
+    //    input test
+    @Test
+    public void test2() {
 //        args = new String[]{"aaa", "left", "left", "f", "bbb", "forward", "f", "f", "f", "f", "f", "LeFFt", "f", "f"};
 //        directions = new OptionsParser().parse(args);
 //        engine = new SimulationEngine(directions, map, positions);
@@ -68,10 +68,10 @@ public class AnimalMovingTest {
 //        } catch (AssertionError | NullPointerException e) {
 //            e.printStackTrace();
 //        }
-//    }
-//
-//    @Test
-//    public void test3() {
+    }
+
+    @Test
+    public void test3() {
 //        args = new String[]{"left", "right", "f", "forward", "r", "l", "f", "f", "r", "l", "f", "l", "r", "f", "f", "left", "f", "f", "f"};
 //        directions = new OptionsParser().parse(args);
 //        engine = new SimulationEngine(directions, map, positions);
@@ -90,11 +90,11 @@ public class AnimalMovingTest {
 //        } catch (AssertionError | NullPointerException e) {
 //            e.printStackTrace();
 //        }
-//    }
-//
-//    // trying to make a collision and put animal on the other
-//    @Test
-//    public void test4() {
+    }
+
+    // trying to make a collision and put animal on the other
+    @Test
+    public void test4() {
 //        positions = new Vector2d[]{new Vector2d(3, 6), new Vector2d(0, 3), new Vector2d(3, 0), new Vector2d(6, 3), new Vector2d(6, 3)};
 //        map = new RectangularMap(7, 7);
 //        args = new String[]{"r", "r", "r", "l", "r", "f", "l", "f", "f", "f", "f", "f", "f", "f", "f", "f"};
@@ -123,7 +123,7 @@ public class AnimalMovingTest {
 //        } catch (AssertionError | NullPointerException e) {
 //            e.printStackTrace();
 //        }
-//    }
+    }
 
 
 }

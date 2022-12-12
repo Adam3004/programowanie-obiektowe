@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="agh.ics.oop.IWorldMapTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-12-12T20:22:27" hostname="DESKTOP-9C6IDOG" time="0.089">
+  <properties/>
+  <testcase name="rectangularMapTest()" classname="agh.ics.oop.IWorldMapTests" time="0.083"/>
+  <testcase name="grassFieldTest2()" classname="agh.ics.oop.IWorldMapTests" time="0.004"/>
+  <testcase name="grassFieldTest()" classname="agh.ics.oop.IWorldMapTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

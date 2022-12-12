@@ -5,6 +5,7 @@ import javafx.application.Application;
 
 public class World {
     public static void main(String[] args) {
+//        System.out.println(new GrassField(10));
         Application.launch(App.class, args);
     }
 
@@ -14,4 +15,7 @@ public class World {
 //    wyświetlanie mapy w gui punkt 8 dodaje ograniczenie do 1 kolumny więc trzebaby to w pętli dupnąć
 
 //    spotbups IE1, IE2 warto przeczytać o tych błędach, checkstyle
+
+//    determination / join
+//    żeby główny wątek się nie skończył jak inne trwaj
 }

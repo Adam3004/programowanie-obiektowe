@@ -23,6 +23,11 @@ public class Grass implements IMapObject {
     }
 
     @Override
+    public String getImageOfObject() {
+        return "oolab/src/main/resources/grass.png";
+    }
+
+    @Override
     public String toString() {
         return "*";
     }

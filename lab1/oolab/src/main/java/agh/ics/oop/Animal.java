@@ -91,6 +91,11 @@ public class Animal implements IMapObject {
     }
 
     @Override
+    public String getImageOfObject() {
+        return "oolab/src/main/resources/bierdra" + this.toString() + ".png";
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(mapDirection.name().toLowerCase(Locale.ROOT).charAt(0)).toUpperCase();
     }
