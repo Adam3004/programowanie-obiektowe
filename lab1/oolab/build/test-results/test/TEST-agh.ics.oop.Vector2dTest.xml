@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.Vector2dTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-12-12T20:22:27" hostname="DESKTOP-9C6IDOG" time="0.008">
+<testsuite name="agh.ics.oop.Vector2dTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-12-13T12:05:28" hostname="DESKTOP-9C6IDOG" time="0.022">
   <properties/>
-  <testcase name="upperRightTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
-  <testcase name="addTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
-  <testcase name="precedesTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
-  <testcase name="oppositeTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
-  <testcase name="follows()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
-  <testcase name="lowerLeftTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
+  <testcase name="upperRightTest()" classname="agh.ics.oop.Vector2dTest" time="0.002"/>
+  <testcase name="addTest()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
+  <testcase name="precedesTest()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
+  <testcase name="oppositeTest()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
+  <testcase name="follows()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
+  <testcase name="lowerLeftTest()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
   <testcase name="equalsTest()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
-  <testcase name="toStringTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
-  <testcase name="subtractTest()" classname="agh.ics.oop.Vector2dTest" time="0.0"/>
+  <testcase name="toStringTest()" classname="agh.ics.oop.Vector2dTest" time="0.001"/>
+  <testcase name="subtractTest()" classname="agh.ics.oop.Vector2dTest" time="0.002"/>
   <system-out><![CDATA[All tests in Vector2dTest are ended
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
